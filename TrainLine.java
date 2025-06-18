@@ -36,7 +36,7 @@ public class TrainLine {
      */
     public void add(String name) {
         Station newStation = new Station(name);
-        if (this.head == null) {
+        if (this.head == null) { //If the head is empty 
             // No stations exist in this line. Make this new station
             // point to head or tail
             this.head = newStation;
@@ -59,16 +59,16 @@ public class TrainLine {
      * @return the position or use -1 if no station is found.
      */
     public int indexOf(String name) {
-    Station current = head;
+    Station current = head; //The head position is at 0.
     int position = 0;
-    while (current != null) {
-        if (current.getName().equals(name)) {
+    while (current != null) { //Find the position of the current station name.
+        if (current.getName().equals(name)) { //Check if the name you are searching for matches that current staiton name and record the postion.
             return position;
         }
-        current = current.getNext();
-        position++;
+        current = current.getNext(); //Keep looking until the name matches with searched station name.
+        position++; //The position will increase by 1 from the head.
     }
-    return -1;
+    return -1; //The station is not found.
 }
         public boolean contains(String name) {
         return indexOf(name) != -1;
