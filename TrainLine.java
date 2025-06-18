@@ -98,13 +98,13 @@ public class TrainLine {
     private static final String NEXT_ARROW = " --> ";
 
         public String toString() {
-        if (this.head == null) {
+        if (this.head == null) { //if it is empty use the empty string format messages.
             return EMPTY_TRAIN_LINE; //The message will say The train line is empty.
-        } else {
+        } else {//If not use the Station Name format. Red Line Southbound has the following stations.
             String stations = String.format(TRAIN_LINE_HEADER, this.name, this.head.getName());
             Station cursor = this.head.getNext();
             while (cursor != null) {
-                stations = stations + NEXT_ARROW + cursor.getName();
+                stations = stations + NEXT_ARROW + cursor.getName();//Name of station, arrow, next station until the last station has been named.
                 cursor = cursor.getNext();
             }
             return stations;
