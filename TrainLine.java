@@ -109,5 +109,6 @@ public class TrainLine {
             }
             return stations;
         }
-    }
-}
+
+            }   //method toString()
+         } //class TrainLine
