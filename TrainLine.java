@@ -70,7 +70,8 @@ public class TrainLine {
     }
     return -1; //The station is not found.
 }
-        public boolean contains(String name) {
+/**Use the logic and compare it to the Station Names used in the Trainline_Implementation Names */
+        public boolean contains(String name) { //If the logic above is true and contaions that station name the postion will not return 0.
         return indexOf(name) != -1;
     }
     /**
@@ -98,7 +99,7 @@ public class TrainLine {
 
         public String toString() {
         if (this.head == null) {
-            return EMPTY_TRAIN_LINE;
+            return EMPTY_TRAIN_LINE; //The message will say The train line is empty.
         } else {
             String stations = String.format(TRAIN_LINE_HEADER, this.name, this.head.getName());
             Station cursor = this.head.getNext();
