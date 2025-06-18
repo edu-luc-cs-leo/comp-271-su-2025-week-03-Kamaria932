@@ -6,6 +6,8 @@ public class TrainLine {
     private String name;
     /** The head station of the train line */
     private Station head;
+    /** station at the end. */
+    private Station tail;
     /** Current number of stations in the line */
     private int numberOfStations;
 
@@ -13,6 +15,7 @@ public class TrainLine {
     public TrainLine(String name) {
         this.name = name;
         this.head = null;
+        this.tail = null;
         this.numberOfStations = 0;
     } // basic constructor
 
@@ -28,7 +31,7 @@ public class TrainLine {
 
     /**
      * Adds a new station after the last station of a trainline.
-     * 
+     * adding the private tail field and initializing it alongside head, keep a direct reference to the end of the list, or be able to start at the tail.
      * @param name String with name of new station to create and add
      */
     public void add(String name) {
