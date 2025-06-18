@@ -48,28 +48,45 @@ public class TrainLine {
             //update this as the current last station.
               tail = newStation;
             }
-        this.numberOfStations = this.numberOfStations+1; 
+        this.numberOfStations = this.numberOfStations + 1;
         // or this.numberOfStations++;
         // or this.numberOfStatiosn += 1;
     } // method add
 
     /**
+     * Finds where a station is by name
+     * Search for the station using @param
+     * @return the position or use -1 if no station is found.
+     */
+    public int indexOf(String name) {
+    Station current = head;
+    int position = 0;
+    while (current != null) {
+        if (current.getName().equals(name)) {
+            return position;
+        }
+        current = current.getNext();
+        position++;
+    }
+    return -1;
+}
+        public boolean contains(String name) {
+        return indexOf(name) != -1;
+    }
+    /**
      * Finds how many stations are in a train line
      * 
      * METHOD MADE OBSOLETE BY INTRODUCTING TrainLine.numberOfStations
      */
-    public int stationCounter() {
+        public int stationCounter() {
         int counter = 0;
-        if (this.head != null) {
-            // Train line not empty
-            Station cursor = this.head;
-            while (cursor != null) {
-                counter = counter + 1;
-                cursor = cursor.getNext();
-            }
+        Station cursor = head;
+        while (cursor != null) {
+            counter++;
+            cursor = cursor.getNext();
         }
         return counter;
-    } // method countStations
+    }
 
 
     /**
@@ -79,8 +96,8 @@ public class TrainLine {
     private static final String TRAIN_LINE_HEADER = "\"%s\" has the following stations: %s";
     private static final String NEXT_ARROW = " --> ";
 
-    public String toString() {
-        if (head == null) {
+        public String toString() {
+        if (this.head == null) {
             return EMPTY_TRAIN_LINE;
         } else {
             String stations = String.format(TRAIN_LINE_HEADER, this.name, this.head.getName());
@@ -91,5 +108,5 @@ public class TrainLine {
             }
             return stations;
         }
-    } // method toString
-} // class TrainLine
+    }
+}
