@@ -38,18 +38,16 @@ public class TrainLine {
         Station newStation = new Station(name);
         if (this.head == null) {
             // No stations exist in this line. Make this new station
-            // the head station of the line
+            // point to head or tail
             this.head = newStation;
+            this.tail = newStation;
         } else {
-            // The line has at least one station (the head station).
-            // Find the last station and make its next station the new one.
-            Station cursor = this.head;
-            while (cursor.hasNext()) {
-                cursor = cursor.getNext();
+            // Remove the head traversal and replace it. Remember the last node, thus whenever a new station is added you can access the tail and not start from its head.
+            //Add after the tail station.
+            tail.setNext(newStation);
+            //update this as the current last station.
+              tail = newStation;
             }
-            // Cursor is now at the last station of the line
-            cursor.setNext(newStation);
-        }
         this.numberOfStations = this.numberOfStations+1; 
         // or this.numberOfStations++;
         // or this.numberOfStatiosn += 1;
@@ -82,7 +80,7 @@ public class TrainLine {
     private static final String NEXT_ARROW = " --> ";
 
     public String toString() {
-        if (this.head == null) {
+        if (head == null) {
             return EMPTY_TRAIN_LINE;
         } else {
             String stations = String.format(TRAIN_LINE_HEADER, this.name, this.head.getName());
